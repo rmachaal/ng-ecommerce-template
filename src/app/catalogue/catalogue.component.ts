@@ -9,6 +9,7 @@ import { IProduct } from "./product.model";
 export class CatalogueComponent {
   products: IProduct[];
   filter: string = "";
+  cart: IProduct[] = [];
 
   constructor() {
     this.products = [
@@ -188,22 +189,13 @@ export class CatalogueComponent {
     ];
   }
 
-  addToCart(product: Product) {
+  addToCart(product: IProduct) {
     this.cart.push(product);
     console.log(`product ${product.name} added to cart`);
   }
-
-  getImageUrl(product: IProduct) {
-    return `assets/images/robot-parts/${product.imageName}`;
-  }
-
   getFilteredProducts() {
     return this.filter === ""
       ? this.products
       : this.products.filter((product) => product.category === this.filter);
-  }
-
-  getDiscountedClasses(product: IProduct) {
-    return { strikethrough: product.discount > 0 };
   }
 }
