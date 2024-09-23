@@ -188,6 +188,11 @@ export class CatalogueComponent {
     ];
   }
 
+  addToCart(product: Product) {
+    this.cart.push(product);
+    console.log(`product ${product.name} added to cart`);
+  }
+
   getImageUrl(product: IProduct) {
     return `assets/images/robot-parts/${product.imageName}`;
   }
